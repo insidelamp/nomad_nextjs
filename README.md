@@ -1,6 +1,6 @@
 # NexhJS introduction
 
-// 노마드코더 NextJs 사용하기 1 - 0
+// 노마드코더 NextJs 사용하기 1 - 0 library와 framework의 차이 설명
 
 library 와 framework 의 차이
 
@@ -16,7 +16,8 @@ framework는 코드를 어떤곳에 넣으면 framework가 그 코드르 부르�
 react.js 는 원할때 부르고 원할때 사용하는 library
 next.js franmework는 코드를 적절하게 넣는 집 ( 코드가 게스트같은것이라 생각하면편함 코드를 적절하게 넣어주면 알아서 보여줌)
 
-// 노마드코더 NextJs 사용하기 1 - 1
+// 노마드코더 NextJs 사용하기 1 - 1 nomad Pages에 들어갈수있는 예외들
+
 page의 이름작성시 파일이름으로 url이 만들어지기떄문에 신경쓸것, components의 이름은 중요하지않음 ( 중요부위는 export default ) 즉, url이름은 파일명이될것임
 유저에게 보여주고싶은게있다면 pages 폴더에서 파일에 export default function 을 해줘야함
 
@@ -25,7 +26,7 @@ page의 이름작성시 파일이름으로 url이 만들어지기떄문에 신�
 1. index.js 는 기본으로 home 을 잡아줌 => http://localhost:3000/
 2. jsx를 사용하고있다면 React.js를 import 해줄 필요가없음
 
-// 노마드코더 NextJs 사용하기 1 - 2
+// 노마드코더 NextJs 사용하기 1 - 2 react-CSR, next-SSR 설명
 
 next.js의 가장 좋은 기능중 하나는 앱에 있는 페이지들이 미리 렌더링되는것임 ( 정적으로 생성됨 )
 
@@ -63,7 +64,7 @@ next.js는 새로고침을 하면 앱의 초기상태를 활용해서 미리 렌
 - 사용자가 나의 웹사아트에 들어오게되면 이미 무언가가 있는다는것 ( 사용자가 코드를 다운받아 react를 실행시키기를 기다리지않아도됨 )
 - 모든게 다 로딩된다면 react.js가 연결되어서 원하는 모든것을 가능하게해줌
 
-// 노마드코더 NextJs 사용하기 1 - 3
+// 노마드코더 NextJs 사용하기 1 - 3 next.js에서 새로고침없이 route 시켜주는방법
 
 next.js 에서의 eslint에서 a태그를 사용하지말라고함
 이유는 route로 이동시 새로고침이 일어나 느려지게하기떄문임
@@ -81,3 +82,34 @@ Link는 우리에게 Next 애플리케이션의 클라이언트 사이드 네이
 위와 같은 코드 작성시 아래의 오류가 나옴  legacyBehavior 추가할경우 해결됨
 
 Invalid <Link> with <a> child. Please remove <a> or use <Link legacyBehavior>.
+
+// 노마드코더 NextJs 사용하기 1 - 4 Next.js 어플리케이션에 css를 추가하는 방법 1편
+
+1. inline CSS
+2. module.css = CSS모듈 패턴사용하기
+
+- 일반적인 css방법을 사용하지만 일반적인것과 틀린점은 className로 NavBar.module.css 에 적인 .nav 가 아닌 className={styles.nav} css모듈을 불러와 변수처럼 사용함
+- 요소를 살펴볼경우 className이 무작위 글자로 바껴서 에러가 나오지않음 ( className 의 충돌이 없음 )
+- 두가지 이상의 className을 사용해야할경우 백틱으로 사용하는방법과 배열로 사용하는방법등이 있음 ( a태그의 밑줄없애기 , a태그의 색상변화 )
+
+/\*
+
+.link {
+text-decoration: none;
+}
+.active {
+color: tomato;
+}
+
+\*/
+module.css CSS모듈에 위의 코드를 붙여놓고
+
+1.  백틱의 경우
+    className={`${styles.link} ${
+    router.pathname === "/" ? styles.active : ""
+  }`}
+2.  배열의 경우
+    className={[
+    styles.link,
+    router.pathname === "/about" ? styles.active : "",
+    ].join(" ")}
