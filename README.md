@@ -85,6 +85,8 @@ Invalid <Link> with <a> child. Please remove <a> or use <Link legacyBehavior>.
 
 // 노마드코더 NextJs 사용하기 1 - 4 Next.js 어플리케이션에 css를 추가하는 방법 1편
 
+Next.jsdp style 를 추가하는방법
+
 1. inline CSS
 2. module.css = CSS모듈 패턴사용하기
 
@@ -106,10 +108,27 @@ module.css CSS모듈에 위의 코드를 붙여놓고
 
 1.  백틱의 경우
     className={`${styles.link} ${
-    router.pathname === "/" ? styles.active : ""
-  }`}
+  router.pathname === "/" ? styles.active : ""
+}`}
 2.  배열의 경우
     className={[
     styles.link,
     router.pathname === "/about" ? styles.active : "",
     ].join(" ")}
+
+// 노마드코더 NextJs 사용하기 1 - 5 Next.js 어플리케이션에 css를 추가하는 방법 2편
+
+Next.jsdp style 를 추가하는방법
+
+3. styled jsx - NextJs 고유의 방법
+
+<style jsx>{`
+        nav {
+          background-color: tomato;
+        }
+        a {
+          text-decoration: none;
+        }
+      `}</style>
+
+styled jsx는 오직 같은 컴포넌트 내부의 범위만 한정함
