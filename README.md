@@ -62,3 +62,22 @@ next.js는 새로고침을 하면 앱의 초기상태를 활용해서 미리 렌
   위와같은 이유 때문에 SEO에 정말 좋다고함 ( 구글 검색엔진같은경우에도 사용자에게 너무 좋음)
 - 사용자가 나의 웹사아트에 들어오게되면 이미 무언가가 있는다는것 ( 사용자가 코드를 다운받아 react를 실행시키기를 기다리지않아도됨 )
 - 모든게 다 로딩된다면 react.js가 연결되어서 원하는 모든것을 가능하게해줌
+
+// 노마드코더 NextJs 사용하기 1 - 3
+
+next.js 에서의 eslint에서 a태그를 사용하지말라고함
+이유는 route로 이동시 새로고침이 일어나 느려지게하기떄문임
+
+Link는 우리에게 Next 애플리케이션의 클라이언트 사이드 네이게이션을 제공해줌
+
+// 이전
+<a href="/">Home</a>
+
+// 이후
+
+<Link  href="/">
+  <a>Home</a>
+</Link>
+위와 같은 코드 작성시 아래의 오류가 나옴  legacyBehavior 추가할경우 해결됨
+
+Invalid <Link> with <a> child. Please remove <a> or use <Link legacyBehavior>.
