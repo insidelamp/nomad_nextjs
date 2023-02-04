@@ -132,3 +132,26 @@ Next.jsdp style 를 추가하는방법
       `}</style>
 
 styled jsx는 오직 같은 컴포넌트 내부의 범위만 한정함
+styled jsx 컴포넌트에 스코프에 한정되어 적용됨
+
+// 노마드코더 NextJs 사용하기 1 - 6 reset css 적용 방법 ( Global Styles 적용 등 ) , 커스터 마이징
+
+jsx문법을 사용해서 style을 적용시킬때 모든 지점에 똑같은 코드를 넣는건 별로라고함
+그래서 공통으로 사용하는 App component라는게 있어야하는데 이걸 pages 폴더에 \_app.js 라는 파일임
+App Component는 일종의 어떤 컴포넌트의 청사진임 ( Next.js 가 모든페이지를 렌더링 하는곳 )
+
+\_app.js 라는 파일을 만들면
+NextJS는 About이 렌더링되기전에 먼저 App을 봐주고 about 내용물을 렌더링함
+
+Nextjs가 component 프롬스로 \_app.js 파일내의 App 함수에 전달함
+
+//ex
+
+export default function App({ About, pageProps }) {
+return (
+<div>
+<About {...pageProps} />
+<span>hello</span>
+</div>
+);
+}
